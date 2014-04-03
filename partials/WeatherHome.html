@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-md-12">
+        <label for="searchText">City</label>
+        <input type="text" ng-model="searchText" id="searchText" size="30"
+               placeholder="UK City" ng-keyup="triggerSearch(false)"/>
+        <button ng-click="triggerSearch(true)">Search</button>
+       <br /> Or maybe try:
+        <span ng-repeat="city in Cities"><a href="#weather/{{city}}">{{city}}</a> </span>
+
+
+    </div>
+</div>
+
+<span ng-if="message" style="color:red">{{message}}</span>
+
+<div class="row" ng-if="showInfo">
+
+    <div class="col-md-4">
+        <!-- map -->
+            <img ng-src="{{SR.ImageURL}}" />
+    </div>
+    <div class="col-md-8">
+
+
+
+
+        <div class="row">
+            <div class="col-md-2"><img height="75" width="75" ng-src="{{SR.WeatherIconURL}}"/></div>
+            <div class="col-md-10"><h2>Today's weather for {{SR.name}} is {{SR.weather[0].description}}</h2></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">City</div>
+            <div class="col-md-9">{{SR.name}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">Location (Lat,Lon)</div>
+            <div class="col-md-9">{{SR.coord.lat}},{{SR.coord.lon}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">Weather</div>
+            <div class="col-md-9">{{SR.weather[0].main}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Temperature</div>
+            <div class="col-md-9">{{SR.main.temp | number:0}}°C</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Pressure</div>
+            <div class="col-md-9">{{SR.main.pressure}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Humidity</div>
+            <div class="col-md-9">{{SR.main.humidity | number:0}}%</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Wind</div>
+            <div class="col-md-9">{{SR.wind.speed | number:0}} mph</div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
